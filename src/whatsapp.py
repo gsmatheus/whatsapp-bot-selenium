@@ -83,7 +83,6 @@ class WhatsApp:
                 'message': str(e)
             }
 
-    @property
     def home(self):
         """
         Função que retorna para a pagina inicial do WhatsApp.
