@@ -1,3 +1,4 @@
+from selenium import webdriver
 from time import sleep
 
 
@@ -6,11 +7,17 @@ class WhatsApp:
     Classe responsavel por executar as função do wpp no navegador
     """
 
-    def __init__(self, browser):
-        """
-        :param browser: Recebe o objeto do selenium.
-        """
-        self.browser = browser
+    def __init__(self):
+        # Configurações do driver
+        self._chrome_options = webdriver.ChromeOptions()
+        self._chrome_options.add_argument("user-data-dir=session")
+        self._chrome_options.add_argument('--no-sandbox')
+        # self._chrome_options.add_argument('--headless')
+
+        self.browser = webdriver.Chrome(
+            executable_path="chromedriver.exe",
+            options=self._chrome_options)
+
         self.home()
         self.waiting_for_qrcode()
 

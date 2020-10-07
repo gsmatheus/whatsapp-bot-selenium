@@ -4,3 +4,4 @@
 .selenium
 .session/
 chromedriver.exe
+/session/
