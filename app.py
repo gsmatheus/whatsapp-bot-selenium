@@ -9,12 +9,10 @@ chrome_options.add_argument('--no-sandbox')
 # chrome_options.add_argument('--headless')
 
 browser = webdriver.Chrome(executable_path="chromedriver.exe", options=chrome_options)
-
 wpp = WhatsApp(browser=browser)
-wpp.home()
 
-# Depois que ler o QR pela a primeira vez comente essa linha
-input('Aperte enter após ler o QR')
+# Retorna uma lista com as mensagens novas. [contato , horario, mensagem]
+ultimas_mensagens = wpp.latest_messages()
 
 contato = ''  # Numero do contato exemplo: +55149987...
 mensagem = 'Bom dia, tudo bem ?'
