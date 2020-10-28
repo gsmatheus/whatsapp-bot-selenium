@@ -12,7 +12,8 @@ class Database:
             "nome VARCHAR(100) NOT NULL",
             "recado VARCHAR(100)",
             "numero VARCHAR(30) NOT NULL",
-            "step INTEGER DEFAULT 0 NOT NULL"
+            "step INTEGER DEFAULT 0 NOT NULL",
+            "cotacao VARCHAR(15)"
         ], constraints={
             "UNIQUE(numero)"
         })
@@ -30,7 +31,7 @@ class Database:
             recado = f"'{recado}'"
 
         try:
-            query = f"INSERT INTO {tablename} VALUES (NULL, '{nome}', {recado}, '{numero}', 0)"
+            query = f"INSERT INTO {tablename} VALUES (NULL, '{nome}', {recado}, '{numero}', 0, NULL)"
             self.cursor.execute(query)
             self.conn.commit()
         except sqlite3.DatabaseError as e:
@@ -41,14 +42,17 @@ class Database:
         self.cursor.execute(query)
         self.conn.commit()
 
+    def update_cotacao(self, cotacao, numero, tablename='contatos'):
+        query = f"UPDATE {tablename} SET cotacao = '{cotacao}' WHERE numero = '{numero}'"
+        self.cursor.execute(query)
+        self.conn.commit()
+
+    def select_cotacao(self, numero, tablename='contatos'):
+        query = f"SELECT cotacao FROM {tablename} WHERE numero = ? LIMIT 1"
+        self.cursor.execute(query, [numero])
+        return self.cursor.fetchone()
+
     def find_client(self, numero, tablename='contatos'):
         query = f"SELECT * FROM {tablename} WHERE numero = ? LIMIT 1"
         self.cursor.execute(query, [numero])
-        res = self.cursor.fetchone()
-        if res:
-            return {
-                'nome': res[1],
-                'recado': res[2],
-                'numero': res[3],
-                'step': res[4]
-            }
+        return self.cursor.fetchone()

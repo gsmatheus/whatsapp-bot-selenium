@@ -12,7 +12,14 @@ class Client:
         :param contact: Numero do contato
         :return: Retorna as info do contato.
         """
-        return self.__db.find_client(contact)
+        res = self.__db.find_client(contact)
+        if res:
+            return {
+                'nome': res[1],
+                'recado': res[2],
+                'numero': res[3],
+                'step': res[4]
+            }
 
     def newClient(self, nome, numero, recado):
         """
@@ -33,3 +40,17 @@ class Client:
             numero=numero,
             step=step
         )
+
+    def changeCulture(self, numero, cultura):
+        return self.__db.update_cotacao(
+            numero=numero,
+            cotacao=cultura
+        )
+
+    def searchCulture(self, numero):
+        res = self.__db.select_cotacao(
+            numero=numero
+        )
+        return {
+            'cultura': res[0]
+        }

@@ -11,8 +11,12 @@ class WhatsApp:
         # Configurações do driver
         self._chrome_options = webdriver.ChromeOptions()
         self._chrome_options.add_argument("user-data-dir=session")
+
         self._chrome_options.add_argument('--no-sandbox')
-        # self._chrome_options.add_argument('--headless')
+        # self._chrome_options.add_argument('-headless')
+        # self._chrome_options.add_argument('--disable-dev-shm-usage')
+        # self._chrome_options.add_argument('blink-settings=imagesEnabled=false')
+        self._chrome_options.add_argument('--disable-gpu')
 
         self.browser = webdriver.Chrome(
             executable_path="chromedriver.exe",

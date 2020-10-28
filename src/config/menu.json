@@ -1,0 +1,61 @@
+{
+    "inicio": {
+        "descricao": "Olá {0}, o que gostaria de saber hoje?%0a",
+        "opcoes": [
+            {
+                "id": 1,
+                "name": "Cotações"
+            }
+        ]
+    },
+    "cotacao": [
+        {
+            "id": 1,
+            "name": "Açúcar",
+            "keyword": "acucar"
+        },
+        {
+            "id": 2,
+            "name": "Algodão",
+            "keyword": "algodao"
+        },
+        {
+            "id": 3,
+            "name": "Arroz",
+            "keyword": "arroz"
+        },
+        {
+            "id": 4,
+            "name": "Bezerro",
+            "keyword": "bezerro"
+        },
+        {
+            "id": 5,
+            "name": "Boi-Gordo",
+            "keyword": "boi-gordo"
+        },
+        {
+            "id": 6,
+            "name": "Café",
+            "keyword": "cafe"
+        },
+        {
+            "id": 7,
+            "name": "Soja",
+            "keyword": "soja"
+        },
+        {
+            "id": 8,
+            "name": "Todas",
+            "keyword": "todas"
+        },
+        {
+            "id": 0,
+            "name": "Voltar"
+        }
+    ],
+    "mensagens": {
+        "invalido": "Por favor escolha uma opção valida.",
+        "passo3": "1 - Mais recente%0a2 - Todas%0a0 - Voltar"
+    }
+}
